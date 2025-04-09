@@ -29,6 +29,7 @@ namespace TravelGuide.Controllers
             });
         }
 
+        //method to get exact location details from the coordinates
         private async Task<LocationDetailsModel> ReverseGeocode(double latitude, double longitude)
         {
             string url = $"https://nominatim.openstreetmap.org/reverse?format=json&lat={latitude}&lon={longitude}&zoom=18&addressdetails=1";
