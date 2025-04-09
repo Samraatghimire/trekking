@@ -8,12 +8,12 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
 # Copy csproj and restore
-COPY *.csproj ./
-RUN dotnet restore
+COPY ["TravelGuide.csproj", "./"]
+RUN dotnet restore "TravelGuide.csproj"
 
-# Copy the entire source and publish
-COPY . ./
-RUN dotnet publish -c Release -o /app/publish
+# Copy rest of the source and publish
+COPY . .
+RUN dotnet publish "TravelGuide.csproj" -c Release -o /app/publish
 
 # Final stage
 FROM base AS final
