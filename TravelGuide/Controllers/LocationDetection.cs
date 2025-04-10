@@ -2,6 +2,7 @@
 using System.Text.Json;
 using TravelGuide.Model;
 using System.Net.Http;
+using TravelGuide.Services;
 
 namespace TravelGuide.Controllers
 {
@@ -10,23 +11,39 @@ namespace TravelGuide.Controllers
     public class LocationDetectionController : ControllerBase
     {
         private readonly HttpClient _httpClient;
+        private readonly IPlacesService _placesService;
 
-        public LocationDetectionController(HttpClient httpClient)
+        public LocationDetectionController(HttpClient httpClient, IPlacesService placesService)
         {
             _httpClient = httpClient;
+            _placesService = placesService;
         }
 
         [HttpPost]
         public async Task<IActionResult> PostLocation([FromBody] LocationModel location)
         {
-            var locationDetails = await ReverseGeocode(location.Latitude, location.Longitude);
-
-            return Ok(new
+            try
             {
-                message = "Location detected successfully",
-                coordinates = location,
-                address = locationDetails
-            });
+                var locationDetails = await ReverseGeocode(location.Latitude, location.Longitude);
+
+                var attractions = await _placesService.GetNearbyAttractionsAsync(
+                    location.Latitude,
+                    location.Longitude,
+                    location.RadiusInKm,
+                    location.Category,
+                    location.MinRating,
+                    location.MaxDistance);
+
+                return Ok(new LocationResponseModel
+                {
+                    Address = locationDetails,
+                    NearbyAttractions = attractions
+                });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = "An error occurred while processing your request.", error = ex.Message });
+            }            
         }
 
         //method to get exact location details from the coordinates

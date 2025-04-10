@@ -1,3 +1,5 @@
+using TravelGuide.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 
@@ -10,6 +12,9 @@ builder.Services.AddSwaggerGen();
 
 //Registering the HttpClient
 builder.Services.AddHttpClient();
+
+//Registering the GooglePlacesService
+builder.Services.AddScoped<IPlacesService, GeoapifyPlacesService>();
 
 //Registering the controller
 builder.Services.AddControllers();
