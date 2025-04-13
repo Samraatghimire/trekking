@@ -1,4 +1,4 @@
-﻿namespace TravelGuide.Model
+﻿namespace TravelGuide.Model.Location
 {
     public class AttractionModel
     {

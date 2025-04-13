@@ -1,5 +1,5 @@
 ﻿using System.Text.Json;
-using TravelGuide.Model;
+using TravelGuide.Model.Location;
 using TravelGuide.Services;
 public class GeoapifyPlacesService : IPlacesService
 {
@@ -72,7 +72,8 @@ public class GeoapifyPlacesService : IPlacesService
     private string MapCategoryToGeoapify(string category)
     {
         if (string.IsNullOrEmpty(category) || category == "all")
-            return "tourism";
+            return "tourism" +
+                "";
 
         List<string> categoriesList = new List<string>();
 

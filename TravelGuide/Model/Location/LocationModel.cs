@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 
-namespace TravelGuide.Model
+namespace TravelGuide.Model.Location
 {
     public class LocationModel
     {

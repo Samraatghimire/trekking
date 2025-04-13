@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
-using TravelGuide.Model;
 using System.Net.Http;
 using TravelGuide.Services;
+using TravelGuide.Model.Location;
 
 namespace TravelGuide.Controllers
 {

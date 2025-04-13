@@ -1,4 +1,4 @@
-﻿using TravelGuide.Model;
+﻿using TravelGuide.Model.Location;
 
 namespace TravelGuide.Services
 {
