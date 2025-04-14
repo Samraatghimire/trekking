@@ -12,8 +12,8 @@ using TravelGuide.Data;
 namespace TravelGuide.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250413112323_CreateUserTable")]
-    partial class CreateUserTable
+    [Migration("20250414143927_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
