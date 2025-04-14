@@ -12,7 +12,7 @@ using TravelGuide.Data;
 namespace TravelGuide.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250414143927_InitialCreate")]
+    [Migration("20250414155059_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
